@@ -1,12 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component, Fragment } from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: ""
+    };
+  }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  render() {
+    return (
+      <Fragment>
+        <h1>Hello {this.state.name}</h1>
+        <input
+          type="text"
+          placeholder="Type your name..."
+          onChange={e => this.setState({ name: e.target.value })}
+        />
+      </Fragment>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
